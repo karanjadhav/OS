@@ -1,0 +1,318 @@
+#1
+
+for (( i=1 ; $i<6; i++ ))
+        do
+                mkdir $i
+        done
+
+*************************************
+
+#2
+
+do
+        echo '1.Find length'
+        echo '2.Copying string'
+        echo '3.Concate of string'
+        echo '4.compare to sring'
+        echo '5.Reverse string'
+	read str1
+	read option
+	case $option in
+        1) echo ${#str1}
+                ;;
+
+        2) str2=$str1
+        echo $str2
+          ;;
+        3)str2="Mahajan"
+                echo $str1$str2
+                ;;
+        4) str2="Meghana"
+        if [ $str1 == $str2 ]
+        then
+          echo "Equal"
+        else
+            echo "Not equal"
+        fi
+            ;;
+        5) echo $str1 | rev
+                ;;
+
+*************************************
+
+#3
+
+a=1
+	for i in d*.txt
+	do
+		echo "$i"
+		mv $i $a".txt"
+		a=`expr $a + 1`
+	done
+
+*************************************
+
+#4
+
+echo "Directory Path : "$HOME
+
+echo "Path command : $PATH"
+
+echo "SHELL command : $SHELL"
+
+echo "History command : $HISTORY"
+
+echo "Logname command : $LOGNAME"
+
+echo "Term command : $TERM"
+
+*************************************
+
+#5
+
+ls -la | cut -b 1-10
+
+ls -la | cut -c 1-10
+
+*************************************
+
+#6
+
+ls -l | awk '{ print $1 }'
+
+*************************************
+
+#7
+
+echo "command : -type f -name '*.sh' -size +5k -ls"
+find -type f -name "*.sh" -size +0k -ls
+
+*************************************
+
+#1
+
+echo 'Enter the year : '
+read year
+if (( $year%4 == 0 && $year%100 != 0 || $year%400 == 0))
+then
+	echo 'Leap year'
+else
+	echo 'Not a leap year'
+fi
+
+*************************************
+
+#2
+
+echo 'Enter the no of Day : '
+read day
+	if [ $day == 1 ]
+then
+	echo 'Sunday'
+elif [ $day == 2 ]
+then
+	echo 'Monday'
+elif [ $day == 3 ]
+then
+	echo 'Tuesday'
+elif [ $day == 4 ]
+then
+	echo 'Wednesday'
+elif [ $day == 5 ]
+then
+	echo 'Thrusday'
+elif [ $day == 6 ]
+then
+	echo 'Friday'
+elif [ $day == 7 ]
+then
+	echo 'Saturday'
+else
+	echo 'Invalid Entry'
+fi
+
+-----------------------------------------
+
+echo "Enter day in [1-7] : "
+read dae
+case $dae in
+	1)echo "its sunday";;
+	2)echo "its monday";;
+	3)echo "its tuesday";;
+	4)echo "its wednesday";;
+	5)echo "its thursday";;
+	6)echo "its friday";;
+	7)echo "its saturday";;
+	*)echo "Invalid";;
+esac
+
+*************************************
+
+#3
+
+echo "enter 3 numbers  "
+for i in {0..2}
+do
+	echo "num$i : "
+	read arr[$i]
+done
+echo "Array is : ${arr[*]}"
+temp=${arr[0]}
+for (( i=0; i<3; i++ ))
+do
+	num=${arr[$i]}
+	if [ $num -ge $temp ];then
+		temp=$num
+	fi
+done
+echo "Biggest number : $temp"
+
+-----------------------------------------
+
+for i in {0..2}
+do
+	echo "num$i : "
+	read arr[$i]
+done
+echo "Array is : ${arr[*]}"
+temp=${arr[0]}
+avg=0
+for (( i=0; i<3; i++ ))
+do
+	num=${arr[$i]}
+	if [ $num -ge $temp ];then
+		temp=$num
+	fi
+	avg=`expr $num + $avg`
+done
+echo "Biggest number : $temp"
+echo "Average of 3 numbers : "
+a=`expr $avg / 3`
+echo $a
+
+*************************************
+
+#4
+
+echo "Enter a number : "
+read num
+if [ $((num%2)) -eq 0 ];then
+	echo "$num is even number "
+else
+	echo "$num is odd number"
+fi
+
+*************************************
+
+#5
+
+mon=$(date | awk '{print $3}')
+year=$(date | awk '{print $4}')
+let "prev=year-1" "next=year+1"
+cal $mon $prev
+cal $mon $year
+cal $mon $next
+
+*************************************
+
+#6
+
+echo "let command"
+let "var1=5"
+let "var2=7"
+let "var3=var1+var2";
+echo $var3
+
+echo "expr command"
+var5=`expr $var1 + $var3`
+echo $var5
+
+echo "bc command."
+echo "10^2" | bc
+
+*************************************
+
+#7
+
+echo 'Enter the range till you want to calculate the Fibonaccci Series : '
+read range
+i=1
+prev=0
+newprev=0
+while (( $i+$prev < $range ))
+do
+	echo $(expr $prev + $i)
+	newprev=$prev
+	prev=$i
+	i=$(expr $newprev + $i)
+done
+
+*************************************
+
+#8
+
+echo 'Enter a string : '
+read str
+rev=""
+len=${#str}
+for (( i=$len; i>0; i-- ))
+do
+	temp=$(expr $str | cut -c $i)
+	rev=$rev$temp
+done
+echo $rev
+
+*************************************
+
+#9
+
+read -p "Enter size of string :" n
+arr=();
+arr1=();
+for (( i=0;i<n;i++ ))
+do
+	read -p "Enter $i th String : " arr[$i]
+	#read arr[$i]
+	#revstr=${arr[i]} | rev
+	#$arr1[$i]=( $arr[@] $revstr )
+done
+echo "list : ${arr[@]}"
+#arr1=${arr[@]}
+echo "${arr[@]}" | rev
+
+*************************************
+
+#10
+
+echo 'Enter a number : '
+read num
+n=$num
+sum=0
+rem=0
+while (( $n > 0 ))
+do
+	rem=`expr $n % 10`
+	sum=`expr $sum \* 10`
+	sum=`expr $sum + $rem`
+	n=`expr $n / 10`
+done
+echo 'Reverse : ' $sum
+
+*************************************
+
+#1
+
+echo "enter password : "
+read pass
+len=${#pass}
+echo $len
+if [ $len -gt 8 ];then
+echo $pass | grep "[A-Z]" | grep "[a-z]" | grep "[0-9]" | grep "[@#$^&*]"
+if [[ $? -ne 0 ]];then
+	echo "Weak Password"
+else
+	echo "OK"
+fi
+else
+	echo "Weak Password"
+fi

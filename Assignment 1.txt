@@ -1,0 +1,130 @@
+#1
+
+date
+Mon Sep  7 10:32:54 PDT 2020
+date +%Y
+2020
+
+date +%y
+20
+
+date +%T
+10:34:07
+
+date +%b
+Sep
+
+date +%B
+September
+
+cal
+
+cal -m5
+
+cal jan
+
+cal 2026
+
+cal 2021 -m2
+
+********************************
+
+#2
+
+mkdir a b c
+cd a
+touch a.txt b.txt c.txt
+cd b 
+touch a.txt b.txt c.txt
+cd c
+touch a.txt b.txt c.txt
+
+cp -r c a
+
+mv b c
+
+alias h="ls -lh"
+
+mv practice CDAC
+
+********************************
+
+#3
+
+grep s file1.txt file2.txt file3.txt file4.txt file5.txt
+
+cat >file.txt
+nano file.txt
+
+touch f1.txt f2.txt f3.txt f4.txt f5.txt
+
+rm f1.txt f2.txt f3.txt f4.txt f5.tx
+
+********************************
+
+#4
+
+vi file.txt
+
+cat file.txt
+
+cat -n file.txt
+
+tac file.txt
+
+cat file.txt list.txt
+
+********************************
+
+#5
+
+column list1.txt
+cat list1.txt | column list1.txt
+
+cat list1.txt | sort
+cat list1.txt | sort -r
+
+touch -a list1.txt
+stat list1.txt
+
+mkdir .hiddenDirectory
+to check ls -a
+
+ls -r
+
+********************************
+
+#1
+
+mkdir karan
+touch a.txt b.txt c.txt d.txt
+
+chmod +rw a.txt b.txt
+
+chmod +w c.txt
+
+cat>d.hs
+#/bin/sh
+
+chmod +x d.sh
+
+********************************
+
+Q2
+chmod +x karan
+
+********************************
+
+Q3
+chmod -x karan
+chmod -r karan
+
+********************************
+
+Q4
+echo $(file.txt)
+
+********************************
+
+Q5
+echo>>"Hello world" >> file.txt
